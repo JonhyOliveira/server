@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    image: "homeassistant/home-assistant:stable"
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    networks:
+      - nginx_default
+    ports:
+      - '8123:8123'
+
+networks:
+  nginx_default:
+    name: nginx_default
+    external: true
+
