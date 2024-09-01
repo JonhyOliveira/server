@@ -15,6 +15,7 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "partido-reformado"; # Define your hostname.
+  networking.nameservers = [ "8.8.8.8" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
