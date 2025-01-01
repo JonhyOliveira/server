@@ -42,7 +42,15 @@
     fail2ban
     tmux
     otpw
+    neofetch
+    traceroute
+    tcpdump
+    python3
+    jq
   ];
+
+  # Programs
+  programs.bash.shellInit = let etc.profile = "[[ $- == *i* ]] && neofetch"; in etc.profile;
 
   # Services
   security.pam.services.sshd.otpwAuth = true; # add otpw module: https://www.cl.cam.ac.uk/~mgk25/otpw.html
@@ -97,7 +105,7 @@ Match Address 10.0.0.0/8,172.16.0.0/16,192.168.0.0/16
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 447 5006 ];
   networking.firewall.enable = true;
 
   virtualisation.docker.enable = true;
