@@ -47,6 +47,7 @@
     tcpdump
     python3
     jq
+    sqlite
   ];
 
   # Programs
