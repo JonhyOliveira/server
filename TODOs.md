@@ -1,4 +1,4 @@
 - Add README.md for following services
     - [x] [nextcloud](https://nextcloud.com/)
     - [x] [immich](https://immich.app/)
-    - [ ] [actualbudget](https://actualbudget.org/)
+    - [x] [actualbudget](https://actualbudget.org/)
