@@ -48,6 +48,8 @@
     python3
     jq
     sqlite
+    zip
+    unzip
   ];
 
   # Programs
@@ -105,11 +107,38 @@ Match Address 10.0.0.0/8,172.16.0.0/16,192.168.0.0/16
     };
   };
 
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 80 447 5006 ];
   networking.firewall.enable = true;
 
   virtualisation.docker.enable = true;
+
+  systemd.timers."dynamic-dns-update" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "0m";
+      OnUnitActiveSec = "15m";
+      Unit = "dynamic-dns-update.service";
+    };
+  };
+
+  systemd.services."dynamic-dns-update" = {
+    script = ''
+      set -eu
+      cd /root
+      ./DDNS.sh
+    '';
+    path = ["/run/current-system/sw"];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
 
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
