@@ -1,4 +1,4 @@
-# Actual
+# Actual 🅰️
 
 > Your Finances — made simple
 > Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology.
